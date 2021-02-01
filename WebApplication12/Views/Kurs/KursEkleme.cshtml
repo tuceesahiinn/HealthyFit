@@ -1,0 +1,19 @@
+﻿@model WebApplication12.Models.Entity.Kurs
+@{
+    ViewBag.Title = "KursEkleme";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<form action="/Kurs/KursEkleme" class="form-group" method="post">
+    <div></div>
+    <h2>Kurs Kayıtlama</h2>
+    <div style="margin-top:15px">
+        <label>Kurs Ad</label>
+        <input type="text" name="KursAd" /><br />
+    </div>
+
+    <div class="homepage_input form_group col-md-3 " style="margin-top:15px">
+        <input type="submit" value="Kurs Ekle" class="form-control homepage_signup_button" style="background-color:#28a745; color:white;"/>
+    </div>
+</form>
+

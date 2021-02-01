@@ -1,0 +1,30 @@
+﻿@model WebApplication12.Models.Entity.Fatura
+@{
+    ViewBag.Title = "FaturaEkleme";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<form action="/Fatura/FaturaEkleme" class="form-group" method="post">
+    <div></div>
+    <h2>Fatura Ekleme</h2>
+    <div style="margin-top:15px">
+        <label>Salon Id</label>
+        <input type="text" name="SalonId" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Müşteri Id</label>
+        <input type="text" name="MusteriId" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Miktar</label>
+        <input type="text" name="Miktar" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Tarih</label>
+        <input type="text" name="Tarih" /><br />
+    </div>
+    <div class="homepage_input form_group col-md-3 " style="margin-top:15px" >
+        <input type="submit" value="Fatura Ekle" class="form-control homepage_signup_button" style="background-color:#28a745; color:white;"/>
+    </div>
+</form>
+

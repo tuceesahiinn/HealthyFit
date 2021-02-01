@@ -1,0 +1,31 @@
+﻿@using WebApplication12.Models.Entity;
+@model List<Musteri>
+@{
+    ViewBag.Title = "BilgiListele";
+    Layout = "~/Views/Shared/_KullaniciLayout.cshtml";
+}
+
+<h2>Bilgilerim</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Müşteri Id</th>
+        <th>TC</th>
+        <th>Boy</th>
+        <th>Kilo</th>
+        <th>Cinsiyet</th>
+        <th>Doğum Tarihi</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.MusteriId</td>
+            <td>@x.TC</td>
+            <td>@x.Boy</td>
+            <td>@x.Kilo</td>
+            <td>@x.Cinsiyet</td>
+            <td>@x.DogumTarih</td>
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = null;
+}
+
+<script src="~/login/login/dist/script.js"></script>
+<link href="~/login/login/dist/style.css" rel="stylesheet" />
+<div class="wrapper">
+    <div class="sign-panels">
+        <div class="login">
+            <div class="title">
+                <span>Yönetici Giriş</span>
+
+            </div>
+
+
+            <br />
+
+            @using (Html.BeginForm("YoneticiGirisYap", "GirisYap", FormMethod.Post))
+            {
+                <input type="text" placeholder="Kullanıcı Adı" name="KullaniciAd">
+                <input type="password" placeholder="Şifre" name="Sifre">
+                <input type="checkbox" id="remember">
+                <button type="submit" >Giriş Yap</button>
+
+                <a href="/Anasayfa/Index/" class="btn-member btn-fade">
+                    Anasayfaya Dön <i class="fa fa-long-arrow-right"
+                                      aria-hidden="true"></i>
+                </a>
+
+            }
+        </div>
+
+
+
+    </div>
+</div>

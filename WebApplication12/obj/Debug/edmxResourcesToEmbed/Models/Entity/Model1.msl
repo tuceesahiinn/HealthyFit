@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HEALTHYFITModelStoreContainer" CdmEntityContainer="HEALTHYFITEntities">
+    <EntitySetMapping Name="Fatura">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.Fatura">
+        <MappingFragment StoreEntitySet="Fatura">
+          <ScalarProperty Name="FaturaId" ColumnName="FaturaId" />
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kurs">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.Kurs">
+        <MappingFragment StoreEntitySet="Kurs">
+          <ScalarProperty Name="KursId" ColumnName="KursId" />
+          <ScalarProperty Name="KursAd" ColumnName="KursAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="KullaniciAd" ColumnName="KullaniciAd" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="KullaniciTuru" ColumnName="KullaniciTuru" />
+          <ScalarProperty Name="YöneticiKontrol" ColumnName="YöneticiKontrol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaasDekont">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.MaasDekont">
+        <MappingFragment StoreEntitySet="MaasDekont">
+          <ScalarProperty Name="DekontId" ColumnName="DekontId" />
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+          <ScalarProperty Name="PersonelTuru" ColumnName="PersonelTuru" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musteri">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.Musteri">
+        <MappingFragment StoreEntitySet="Musteri">
+          <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="Boy" ColumnName="Boy" />
+          <ScalarProperty Name="Kilo" ColumnName="Kilo" />
+          <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+          <ScalarProperty Name="DogumTarih" ColumnName="DogumTarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personel">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.Personel">
+        <MappingFragment StoreEntitySet="Personel">
+          <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+          <ScalarProperty Name="SGKNo" ColumnName="SGKNo" />
+          <ScalarProperty Name="PersonelTur" ColumnName="PersonelTur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Randevu">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.Randevu">
+        <MappingFragment StoreEntitySet="Randevu">
+          <ScalarProperty Name="RandevuId" ColumnName="RandevuId" />
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+          <ScalarProperty Name="PersonelTuru" ColumnName="PersonelTuru" />
+          <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+          <ScalarProperty Name="TarihSaat" ColumnName="TarihSaat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salon">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.Salon">
+        <MappingFragment StoreEntitySet="Salon">
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="PlakaKod" ColumnName="PlakaKod" />
+          <ScalarProperty Name="SalonAd" ColumnName="SalonAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sehir">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.Sehir">
+        <MappingFragment StoreEntitySet="Sehir">
+          <ScalarProperty Name="Plakakod" ColumnName="Plakakod" />
+          <ScalarProperty Name="Sehir1" ColumnName="Sehir" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Antrenor">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.Antrenor">
+        <MappingFragment StoreEntitySet="Antrenor">
+          <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+          <ScalarProperty Name="Alan1" ColumnName="Alan1" />
+          <ScalarProperty Name="Alan2" ColumnName="Alan2" />
+          <ScalarProperty Name="Alan3" ColumnName="Alan3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DekontListele">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.DekontListele">
+        <MappingFragment StoreEntitySet="DekontListele">
+          <ScalarProperty Name="DekontId" ColumnName="DekontId" />
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+          <ScalarProperty Name="PersonelTuru" ColumnName="PersonelTuru" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FaturaListele">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.FaturaListele">
+        <MappingFragment StoreEntitySet="FaturaListele">
+          <ScalarProperty Name="FaturaId" ColumnName="FaturaId" />
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonelList">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.PersonelList">
+        <MappingFragment StoreEntitySet="PersonelList">
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+          <ScalarProperty Name="SGKNo" ColumnName="SGKNo" />
+          <ScalarProperty Name="SalonAd" ColumnName="SalonAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalonKurslariListele">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.SalonKurslariListele">
+        <MappingFragment StoreEntitySet="SalonKurslariListele">
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="KursId" ColumnName="KursId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalonListele">
+      <EntityTypeMapping TypeName="HEALTHYFITModel.SalonListele">
+        <MappingFragment StoreEntitySet="SalonListele">
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="PlakaKod" ColumnName="PlakaKod" />
+          <ScalarProperty Name="SalonAd" ColumnName="SalonAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="SalonKurslari" TypeName="HEALTHYFITModel.SalonKurslari" StoreEntitySet="SalonKurslari">
+      <EndProperty Name="Kurs">
+        <ScalarProperty Name="KursId" ColumnName="KursId" />
+      </EndProperty>
+      <EndProperty Name="Salon">
+        <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="AntrenorAlanKayitlama" FunctionName="HEALTHYFITModel.Store.AntrenorAlanKayitlama" />
+    <FunctionImportMapping FunctionImportName="AntrenorRandevuAl" FunctionName="HEALTHYFITModel.Store.AntrenorRandevuAl" />
+    <FunctionImportMapping FunctionImportName="DiyetisyenRandevuAl" FunctionName="HEALTHYFITModel.Store.DiyetisyenRandevuAl" />
+    <FunctionImportMapping FunctionImportName="FaturaEkleme" FunctionName="HEALTHYFITModel.Store.FaturaEkleme" />
+    <FunctionImportMapping FunctionImportName="KullaniciSil" FunctionName="HEALTHYFITModel.Store.KullaniciSil" />
+    <FunctionImportMapping FunctionImportName="MaasDekontEkleme" FunctionName="HEALTHYFITModel.Store.MaasDekontEkleme" />
+    <FunctionImportMapping FunctionImportName="MusteriAntrenorRandevuListele" FunctionName="HEALTHYFITModel.Store.MusteriAntrenorRandevuListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.MusteriAntrenorRandevuListele_Result">
+          <ScalarProperty Name="RandevuId" ColumnName="RandevuId" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="TarihSaat" ColumnName="TarihSaat" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MusteriDetayGuncelleme" FunctionName="HEALTHYFITModel.Store.MusteriDetayGuncelleme" />
+    <FunctionImportMapping FunctionImportName="MusteriDetayKayitlama" FunctionName="HEALTHYFITModel.Store.MusteriDetayKayitlama" />
+    <FunctionImportMapping FunctionImportName="MusteriDiyetisyenRandevuListele" FunctionName="HEALTHYFITModel.Store.MusteriDiyetisyenRandevuListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.MusteriDiyetisyenRandevuListele_Result">
+          <ScalarProperty Name="RandevuId" ColumnName="RandevuId" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="TarihSaat" ColumnName="TarihSaat" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MusteriFaturasiListele" FunctionName="HEALTHYFITModel.Store.MusteriFaturasiListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.MusteriFaturasiListele_Result">
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MusteriKullaniciKayitlama" FunctionName="HEALTHYFITModel.Store.MusteriKullaniciKayitlama" />
+    <FunctionImportMapping FunctionImportName="MusteriRandevuListele" FunctionName="HEALTHYFITModel.Store.MusteriRandevuListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.MusteriRandevuListele_Result">
+          <ScalarProperty Name="RandevuId" ColumnName="RandevuId" />
+          <ScalarProperty Name="SalonId" ColumnName="SalonId" />
+          <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+          <ScalarProperty Name="PersonelTuru" ColumnName="PersonelTuru" />
+          <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+          <ScalarProperty Name="TarihSaat" ColumnName="TarihSaat" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PersonelDekontListele" FunctionName="HEALTHYFITModel.Store.PersonelDekontListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.PersonelDekontListele_Result">
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PersonelDetayKayitlama" FunctionName="HEALTHYFITModel.Store.PersonelDetayKayitlama" />
+    <FunctionImportMapping FunctionImportName="PersonelKullaniciKayitlama" FunctionName="HEALTHYFITModel.Store.PersonelKullaniciKayitlama" />
+    <FunctionImportMapping FunctionImportName="PersonelRandevuListele" FunctionName="HEALTHYFITModel.Store.PersonelRandevuListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.PersonelRandevuListele_Result">
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="TarihSaat" ColumnName="TarihSaat" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RandevuSil" FunctionName="HEALTHYFITModel.Store.RandevuSil" />
+    <FunctionImportMapping FunctionImportName="SalonAntrenorListele" FunctionName="HEALTHYFITModel.Store.SalonAntrenorListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.SalonAntrenorListele_Result">
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Alan1" ColumnName="Alan1" />
+          <ScalarProperty Name="Alan2" ColumnName="Alan2" />
+          <ScalarProperty Name="Alan3" ColumnName="Alan3" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SalonAntrenorRandevuListele" FunctionName="HEALTHYFITModel.Store.SalonAntrenorRandevuListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.SalonAntrenorRandevuListele_Result">
+          <ScalarProperty Name="RandevuId" ColumnName="RandevuId" />
+          <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SalonDiyetisyenListele" FunctionName="HEALTHYFITModel.Store.SalonDiyetisyenListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.SalonDiyetisyenListele_Result">
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SalonDiyetisyenRandevuListele" FunctionName="HEALTHYFITModel.Store.SalonDiyetisyenRandevuListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.SalonDiyetisyenRandevuListele_Result">
+          <ScalarProperty Name="RandevuId" ColumnName="RandevuId" />
+          <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SalonFaturaListele" FunctionName="HEALTHYFITModel.Store.SalonFaturaListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.SalonFaturaListele_Result">
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SalonKursListele" FunctionName="HEALTHYFITModel.Store.SalonKursListele" />
+    <FunctionImportMapping FunctionImportName="SalonMaasDekontListele" FunctionName="HEALTHYFITModel.Store.SalonMaasDekontListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.SalonMaasDekontListele_Result">
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SalonMusteriListele" FunctionName="HEALTHYFITModel.Store.SalonMusteriListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.SalonMusteriListele_Result">
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SalonRandevuListele" FunctionName="HEALTHYFITModel.Store.SalonRandevuListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.SalonRandevuListele_Result">
+          <ScalarProperty Name="RandevuId" ColumnName="RandevuId" />
+          <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SehirKursListele" FunctionName="HEALTHYFITModel.Store.SehirKursListele">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HEALTHYFITModel.SehirKursListele_Result">
+          <ScalarProperty Name="kursAd" ColumnName="kursAd" />
+          <ScalarProperty Name="SalonAd" ColumnName="SalonAd" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="HEALTHYFITModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="HEALTHYFITModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="HEALTHYFITModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="HEALTHYFITModel.Store.sp_helpdiagramdefinition" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="HEALTHYFITModel.Store.sp_helpdiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="HEALTHYFITModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="HEALTHYFITModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="YoneticiKullaniciKayitlama" FunctionName="HEALTHYFITModel.Store.YoneticiKullaniciKayitlama" />
+    <FunctionImportMapping FunctionImportName="YoneticiKursEkleme" FunctionName="HEALTHYFITModel.Store.YoneticiKursEkleme" />
+    <FunctionImportMapping FunctionImportName="YoneticiSalonKursEkleme" FunctionName="HEALTHYFITModel.Store.YoneticiSalonKursEkleme" />
+  </EntityContainerMapping>
+</Mapping>

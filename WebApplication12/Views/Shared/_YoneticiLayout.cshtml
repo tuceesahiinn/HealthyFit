@@ -1,0 +1,79 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HEALTHY FİT </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 240px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color: #0094ff;
+                }
+
+        .main {
+            margin-left: 240px; /* Same as the width of the sidenav */
+            padding: 0px 10px;
+        }
+
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+
+        <a href="/Personel/PersonelListele/"><i class="glyphicon glyphicon-list"></i> &nbsp; Personel Listesi</a>
+        <a href="/Fatura/FaturaListele/"><i class="glyphicon glyphicon-list"></i> &nbsp; Fatura Listele</a>
+        <a href="/Fatura/FaturaEkleme/"><i class="glyphicon glyphicon-plus"></i> &nbsp; Fatura Ekleme</a>
+        <a href="/Dekont/YoneticiDekontListele/"><i class="glyphicon glyphicon-list"></i> &nbsp; Dekont Listele</a>
+        <a href="/Salon/SalonKurslarıListele/"><i class="glyphicon glyphicon-list"></i> &nbsp; Salon Kursları Listele</a>
+        <a href="/Kurs/KursEkleme/"><i class="glyphicon glyphicon-plus"></i> &nbsp; Kurs Ekleme</a>
+        <a href="/Salon/SalonListele/"><i class="glyphicon glyphicon-list"></i> &nbsp; Salon Listele</a>
+        <a href="/Anasayfa/Index/"><i class="glyphicon glyphicon-home"></i> &nbsp; Anasayfa</a>
+        <a href="/CikisYap/CikisYap/"><i class="glyphicon glyphicon-remove-sign"></i> &nbsp; Çıkış Yap</a>
+
+    </div>
+
+    <div class="main">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

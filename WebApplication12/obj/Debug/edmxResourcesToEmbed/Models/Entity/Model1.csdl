@@ -1,0 +1,733 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HEALTHYFITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Fatura">
+    <Key>
+      <PropertyRef Name="FaturaId" />
+    </Key>
+    <Property Name="FaturaId" Type="Int32" Nullable="false" />
+    <Property Name="SalonId" Type="Int16" Nullable="false" />
+    <Property Name="MusteriId" Type="Int16" Nullable="false" />
+    <Property Name="Miktar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Musteri" Relationship="Self.FK_Fatura_Musteri" FromRole="Fatura" ToRole="Musteri" />
+    <NavigationProperty Name="Salon" Relationship="Self.FK_Fatura_Salon" FromRole="Fatura" ToRole="Salon" />
+  </EntityType>
+  <EntityType Name="Kurs">
+    <Key>
+      <PropertyRef Name="KursId" />
+    </Key>
+    <Property Name="KursId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KursAd" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Antrenor" Relationship="Self.FK_Antrenor_Kurs" FromRole="Kurs" ToRole="Antrenor" />
+    <NavigationProperty Name="Antrenor1" Relationship="Self.FK_Antrenor_Kurs1" FromRole="Kurs" ToRole="Antrenor" />
+    <NavigationProperty Name="Antrenor2" Relationship="Self.FK_Antrenor_Kurs2" FromRole="Kurs" ToRole="Antrenor" />
+    <NavigationProperty Name="Salon" Relationship="Self.SalonKurslari" FromRole="Kurs" ToRole="Salon" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="TC" />
+    </Key>
+    <Property Name="TC" Type="Int64" Nullable="false" />
+    <Property Name="KullaniciAd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sifre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Soyad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SalonId" Type="Int16" Nullable="false" />
+    <Property Name="KullaniciTuru" Type="Boolean" Nullable="false" />
+    <Property Name="YöneticiKontrol" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_Login" FromRole="Login" ToRole="Musteri" />
+    <NavigationProperty Name="Personel" Relationship="Self.FK_Personel_Login" FromRole="Login" ToRole="Personel" />
+  </EntityType>
+  <EntityType Name="MaasDekont">
+    <Key>
+      <PropertyRef Name="DekontId" />
+    </Key>
+    <Property Name="DekontId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalonId" Type="Int16" Nullable="false" />
+    <Property Name="PersonelId" Type="Int16" Nullable="false" />
+    <Property Name="PersonelTuru" Type="Boolean" Nullable="false" />
+    <Property Name="Miktar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Personel" Relationship="Self.FK_MaasDekont_Personel" FromRole="MaasDekont" ToRole="Personel" />
+    <NavigationProperty Name="Salon" Relationship="Self.FK_MaasDekont_Salon" FromRole="MaasDekont" ToRole="Salon" />
+  </EntityType>
+  <EntityType Name="Musteri">
+    <Key>
+      <PropertyRef Name="MusteriId" />
+    </Key>
+    <Property Name="MusteriId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TC" Type="Int64" Nullable="false" />
+    <Property Name="Boy" Type="Byte" Nullable="false" />
+    <Property Name="Kilo" Type="Byte" Nullable="false" />
+    <Property Name="Cinsiyet" Type="Boolean" Nullable="false" />
+    <Property Name="DogumTarih" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Fatura" Relationship="Self.FK_Fatura_Musteri" FromRole="Musteri" ToRole="Fatura" />
+    <NavigationProperty Name="Login" Relationship="Self.FK_Musteri_Login" FromRole="Musteri" ToRole="Login" />
+    <NavigationProperty Name="Randevu" Relationship="Self.FK_Randevu_Musteri" FromRole="Musteri" ToRole="Randevu" />
+  </EntityType>
+  <EntityType Name="Personel">
+    <Key>
+      <PropertyRef Name="PersonelId" />
+    </Key>
+    <Property Name="PersonelId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TC" Type="Int64" Nullable="false" />
+    <Property Name="IBAN" Type="Int64" Nullable="false" />
+    <Property Name="SGKNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="PersonelTur" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Login" Relationship="Self.FK_Personel_Login" FromRole="Personel" ToRole="Login" />
+    <NavigationProperty Name="MaasDekont" Relationship="Self.FK_MaasDekont_Personel" FromRole="Personel" ToRole="MaasDekont" />
+    <NavigationProperty Name="Antrenor" Relationship="Self.FK_Antrenor_Personel" FromRole="Personel" ToRole="Antrenor" />
+    <NavigationProperty Name="Randevu" Relationship="Self.FK_Randevu_Personel" FromRole="Personel" ToRole="Randevu" />
+  </EntityType>
+  <EntityType Name="Randevu">
+    <Key>
+      <PropertyRef Name="RandevuId" />
+    </Key>
+    <Property Name="RandevuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalonId" Type="Int16" Nullable="false" />
+    <Property Name="PersonelId" Type="Int16" Nullable="false" />
+    <Property Name="PersonelTuru" Type="Boolean" Nullable="false" />
+    <Property Name="MusteriId" Type="Int16" Nullable="false" />
+    <Property Name="TarihSaat" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Musteri" Relationship="Self.FK_Randevu_Musteri" FromRole="Randevu" ToRole="Musteri" />
+    <NavigationProperty Name="Personel" Relationship="Self.FK_Randevu_Personel" FromRole="Randevu" ToRole="Personel" />
+    <NavigationProperty Name="Salon" Relationship="Self.FK_Randevu_Salon" FromRole="Randevu" ToRole="Salon" />
+  </EntityType>
+  <EntityType Name="Salon">
+    <Key>
+      <PropertyRef Name="SalonId" />
+    </Key>
+    <Property Name="SalonId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlakaKod" Type="Byte" Nullable="false" />
+    <Property Name="SalonAd" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Fatura" Relationship="Self.FK_Fatura_Salon" FromRole="Salon" ToRole="Fatura" />
+    <NavigationProperty Name="MaasDekont" Relationship="Self.FK_MaasDekont_Salon" FromRole="Salon" ToRole="MaasDekont" />
+    <NavigationProperty Name="Randevu" Relationship="Self.FK_Randevu_Salon" FromRole="Salon" ToRole="Randevu" />
+    <NavigationProperty Name="Sehir" Relationship="Self.FK_Salon_Sehir" FromRole="Salon" ToRole="Sehir" />
+    <NavigationProperty Name="Kurs" Relationship="Self.SalonKurslari" FromRole="Salon" ToRole="Kurs" />
+  </EntityType>
+  <EntityType Name="Sehir">
+    <Key>
+      <PropertyRef Name="Plakakod" />
+    </Key>
+    <Property Name="Plakakod" Type="Byte" Nullable="false" />
+    <Property Name="Sehir1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Salon" Relationship="Self.FK_Salon_Sehir" FromRole="Sehir" ToRole="Salon" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Antrenor">
+    <Key>
+      <PropertyRef Name="PersonelId" />
+      <PropertyRef Name="Alan1" />
+    </Key>
+    <Property Name="PersonelId" Type="Int16" Nullable="false" />
+    <Property Name="Alan1" Type="Byte" Nullable="false" />
+    <Property Name="Alan2" Type="Byte" />
+    <Property Name="Alan3" Type="Byte" />
+    <NavigationProperty Name="Kurs" Relationship="Self.FK_Antrenor_Kurs" FromRole="Antrenor" ToRole="Kurs" />
+    <NavigationProperty Name="Kurs1" Relationship="Self.FK_Antrenor_Kurs1" FromRole="Antrenor" ToRole="Kurs" />
+    <NavigationProperty Name="Kurs2" Relationship="Self.FK_Antrenor_Kurs2" FromRole="Antrenor" ToRole="Kurs" />
+    <NavigationProperty Name="Personel" Relationship="Self.FK_Antrenor_Personel" FromRole="Antrenor" ToRole="Personel" />
+  </EntityType>
+  <EntityType Name="DekontListele">
+    <Key>
+      <PropertyRef Name="DekontId" />
+      <PropertyRef Name="SalonId" />
+      <PropertyRef Name="PersonelId" />
+      <PropertyRef Name="PersonelTuru" />
+      <PropertyRef Name="Miktar" />
+      <PropertyRef Name="Tarih" />
+    </Key>
+    <Property Name="DekontId" Type="Int32" Nullable="false" />
+    <Property Name="SalonId" Type="Int16" Nullable="false" />
+    <Property Name="PersonelId" Type="Int16" Nullable="false" />
+    <Property Name="PersonelTuru" Type="Boolean" Nullable="false" />
+    <Property Name="Miktar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="FaturaListele">
+    <Key>
+      <PropertyRef Name="FaturaId" />
+      <PropertyRef Name="SalonId" />
+      <PropertyRef Name="MusteriId" />
+      <PropertyRef Name="Miktar" />
+      <PropertyRef Name="Tarih" />
+    </Key>
+    <Property Name="FaturaId" Type="Int32" Nullable="false" />
+    <Property Name="SalonId" Type="Int16" Nullable="false" />
+    <Property Name="MusteriId" Type="Int16" Nullable="false" />
+    <Property Name="Miktar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="PersonelList">
+    <Key>
+      <PropertyRef Name="TC" />
+      <PropertyRef Name="PersonelId" />
+      <PropertyRef Name="Ad" />
+      <PropertyRef Name="Soyad" />
+      <PropertyRef Name="SalonId" />
+      <PropertyRef Name="IBAN" />
+      <PropertyRef Name="SGKNo" />
+      <PropertyRef Name="SalonAd" />
+    </Key>
+    <Property Name="TC" Type="Int64" Nullable="false" />
+    <Property Name="PersonelId" Type="Int16" Nullable="false" />
+    <Property Name="Ad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Soyad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SalonId" Type="Int16" Nullable="false" />
+    <Property Name="IBAN" Type="Int64" Nullable="false" />
+    <Property Name="SGKNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SalonAd" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalonKurslariListele">
+    <Key>
+      <PropertyRef Name="SalonId" />
+      <PropertyRef Name="KursId" />
+    </Key>
+    <Property Name="SalonId" Type="Int16" Nullable="false" />
+    <Property Name="KursId" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalonListele">
+    <Key>
+      <PropertyRef Name="SalonId" />
+      <PropertyRef Name="PlakaKod" />
+      <PropertyRef Name="SalonAd" />
+    </Key>
+    <Property Name="SalonId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlakaKod" Type="Byte" Nullable="false" />
+    <Property Name="SalonAd" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Fatura_Musteri">
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteri">
+        <PropertyRef Name="MusteriId" />
+      </Principal>
+      <Dependent Role="Fatura">
+        <PropertyRef Name="MusteriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fatura_Salon">
+    <End Role="Salon" Type="Self.Salon" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salon">
+        <PropertyRef Name="SalonId" />
+      </Principal>
+      <Dependent Role="Fatura">
+        <PropertyRef Name="SalonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Antrenor_Kurs">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+    <End Role="Antrenor" Type="Self.Antrenor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="KursId" />
+      </Principal>
+      <Dependent Role="Antrenor">
+        <PropertyRef Name="Alan1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Antrenor_Kurs1">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="0..1" />
+    <End Role="Antrenor" Type="Self.Antrenor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="KursId" />
+      </Principal>
+      <Dependent Role="Antrenor">
+        <PropertyRef Name="Alan2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Antrenor_Kurs2">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="0..1" />
+    <End Role="Antrenor" Type="Self.Antrenor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="KursId" />
+      </Principal>
+      <Dependent Role="Antrenor">
+        <PropertyRef Name="Alan3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Musteri_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="TC" />
+      </Principal>
+      <Dependent Role="Musteri">
+        <PropertyRef Name="TC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personel_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="TC" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="TC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MaasDekont_Personel">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MaasDekont" Type="Self.MaasDekont" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="PersonelId" />
+      </Principal>
+      <Dependent Role="MaasDekont">
+        <PropertyRef Name="PersonelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MaasDekont_Salon">
+    <End Role="Salon" Type="Self.Salon" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MaasDekont" Type="Self.MaasDekont" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salon">
+        <PropertyRef Name="SalonId" />
+      </Principal>
+      <Dependent Role="MaasDekont">
+        <PropertyRef Name="SalonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Randevu_Musteri">
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+    <End Role="Randevu" Type="Self.Randevu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteri">
+        <PropertyRef Name="MusteriId" />
+      </Principal>
+      <Dependent Role="Randevu">
+        <PropertyRef Name="MusteriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Antrenor_Personel">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Antrenor" Type="Self.Antrenor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="PersonelId" />
+      </Principal>
+      <Dependent Role="Antrenor">
+        <PropertyRef Name="PersonelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Randevu_Personel">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Randevu" Type="Self.Randevu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="PersonelId" />
+      </Principal>
+      <Dependent Role="Randevu">
+        <PropertyRef Name="PersonelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Randevu_Salon">
+    <End Role="Salon" Type="Self.Salon" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Randevu" Type="Self.Randevu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salon">
+        <PropertyRef Name="SalonId" />
+      </Principal>
+      <Dependent Role="Randevu">
+        <PropertyRef Name="SalonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Salon_Sehir">
+    <End Role="Sehir" Type="Self.Sehir" Multiplicity="1" />
+    <End Role="Salon" Type="Self.Salon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehir">
+        <PropertyRef Name="Plakakod" />
+      </Principal>
+      <Dependent Role="Salon">
+        <PropertyRef Name="PlakaKod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalonKurslari">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="*" />
+    <End Role="Salon" Type="Self.Salon" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="HEALTHYFITEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Fatura" EntityType="Self.Fatura" />
+    <EntitySet Name="Kurs" EntityType="Self.Kurs" />
+    <EntitySet Name="Login" EntityType="Self.Login" />
+    <EntitySet Name="MaasDekont" EntityType="Self.MaasDekont" />
+    <EntitySet Name="Musteri" EntityType="Self.Musteri" />
+    <EntitySet Name="Personel" EntityType="Self.Personel" />
+    <EntitySet Name="Randevu" EntityType="Self.Randevu" />
+    <EntitySet Name="Salon" EntityType="Self.Salon" />
+    <EntitySet Name="Sehir" EntityType="Self.Sehir" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Antrenor" EntityType="Self.Antrenor" />
+    <EntitySet Name="DekontListele" EntityType="Self.DekontListele" />
+    <EntitySet Name="FaturaListele" EntityType="Self.FaturaListele" />
+    <EntitySet Name="PersonelList" EntityType="Self.PersonelList" />
+    <EntitySet Name="SalonKurslariListele" EntityType="Self.SalonKurslariListele" />
+    <EntitySet Name="SalonListele" EntityType="Self.SalonListele" />
+    <AssociationSet Name="FK_Fatura_Musteri" Association="Self.FK_Fatura_Musteri">
+      <End Role="Musteri" EntitySet="Musteri" />
+      <End Role="Fatura" EntitySet="Fatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fatura_Salon" Association="Self.FK_Fatura_Salon">
+      <End Role="Salon" EntitySet="Salon" />
+      <End Role="Fatura" EntitySet="Fatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Antrenor_Kurs" Association="Self.FK_Antrenor_Kurs">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Antrenor" EntitySet="Antrenor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Antrenor_Kurs1" Association="Self.FK_Antrenor_Kurs1">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Antrenor" EntitySet="Antrenor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Antrenor_Kurs2" Association="Self.FK_Antrenor_Kurs2">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Antrenor" EntitySet="Antrenor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Musteri_Login" Association="Self.FK_Musteri_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Musteri" EntitySet="Musteri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personel_Login" Association="Self.FK_Personel_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MaasDekont_Personel" Association="Self.FK_MaasDekont_Personel">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="MaasDekont" EntitySet="MaasDekont" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MaasDekont_Salon" Association="Self.FK_MaasDekont_Salon">
+      <End Role="Salon" EntitySet="Salon" />
+      <End Role="MaasDekont" EntitySet="MaasDekont" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Randevu_Musteri" Association="Self.FK_Randevu_Musteri">
+      <End Role="Musteri" EntitySet="Musteri" />
+      <End Role="Randevu" EntitySet="Randevu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Antrenor_Personel" Association="Self.FK_Antrenor_Personel">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="Antrenor" EntitySet="Antrenor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Randevu_Personel" Association="Self.FK_Randevu_Personel">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="Randevu" EntitySet="Randevu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Randevu_Salon" Association="Self.FK_Randevu_Salon">
+      <End Role="Salon" EntitySet="Salon" />
+      <End Role="Randevu" EntitySet="Randevu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Salon_Sehir" Association="Self.FK_Salon_Sehir">
+      <End Role="Sehir" EntitySet="Sehir" />
+      <End Role="Salon" EntitySet="Salon" />
+    </AssociationSet>
+    <AssociationSet Name="SalonKurslari" Association="Self.SalonKurslari">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Salon" EntitySet="Salon" />
+    </AssociationSet>
+    <FunctionImport Name="AntrenorAlanKayitlama">
+      <Parameter Name="PersonelId" Mode="In" Type="Int16" />
+      <Parameter Name="Alan1" Mode="In" Type="Byte" />
+      <Parameter Name="Alan2" Mode="In" Type="Byte" />
+      <Parameter Name="Alan3" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="AntrenorRandevuAl">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+      <Parameter Name="PersonelId" Mode="In" Type="Int16" />
+      <Parameter Name="MusteriId" Mode="In" Type="Int16" />
+      <Parameter Name="tarihSaat" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="DiyetisyenRandevuAl">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+      <Parameter Name="PersonelId" Mode="In" Type="Int16" />
+      <Parameter Name="MusteriId" Mode="In" Type="Int16" />
+      <Parameter Name="tarihSaat" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="FaturaEkleme">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+      <Parameter Name="MusteriId" Mode="In" Type="Int16" />
+      <Parameter Name="Miktar" Mode="In" Type="Decimal" />
+      <Parameter Name="Tarih" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="KullaniciSil">
+      <Parameter Name="TC" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="MaasDekontEkleme">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+      <Parameter Name="PersonelId" Mode="In" Type="Int16" />
+      <Parameter Name="PersonelTuru" Mode="In" Type="Boolean" />
+      <Parameter Name="Miktar" Mode="In" Type="Decimal" />
+      <Parameter Name="Tarih" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="MusteriAntrenorRandevuListele" ReturnType="Collection(HEALTHYFITModel.MusteriAntrenorRandevuListele_Result)">
+      <Parameter Name="MusteriId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="MusteriDetayGuncelleme">
+      <Parameter Name="TC" Mode="In" Type="Int64" />
+      <Parameter Name="Boy" Mode="In" Type="Byte" />
+      <Parameter Name="Kilo" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="MusteriDetayKayitlama">
+      <Parameter Name="TC" Mode="In" Type="Int64" />
+      <Parameter Name="Boy" Mode="In" Type="Byte" />
+      <Parameter Name="Kilo" Mode="In" Type="Byte" />
+      <Parameter Name="Cinsiyet" Mode="In" Type="Boolean" />
+      <Parameter Name="DogumTarih" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="MusteriDiyetisyenRandevuListele" ReturnType="Collection(HEALTHYFITModel.MusteriDiyetisyenRandevuListele_Result)">
+      <Parameter Name="MusteriId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="MusteriFaturasiListele" ReturnType="Collection(HEALTHYFITModel.MusteriFaturasiListele_Result)">
+      <Parameter Name="MusteriId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="MusteriKullaniciKayitlama">
+      <Parameter Name="TC" Mode="In" Type="Int64" />
+      <Parameter Name="KullaniciAd" Mode="In" Type="String" />
+      <Parameter Name="Sifre" Mode="In" Type="String" />
+      <Parameter Name="Ad" Mode="In" Type="String" />
+      <Parameter Name="Soyad" Mode="In" Type="String" />
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+      <Parameter Name="Boy" Mode="In" Type="Byte" />
+      <Parameter Name="Kilo" Mode="In" Type="Byte" />
+      <Parameter Name="Cinsiyet" Mode="In" Type="Boolean" />
+      <Parameter Name="DogumTarih" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="MusteriRandevuListele" ReturnType="Collection(HEALTHYFITModel.MusteriRandevuListele_Result)">
+      <Parameter Name="MusteriId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="PersonelDekontListele" ReturnType="Collection(HEALTHYFITModel.PersonelDekontListele_Result)">
+      <Parameter Name="PersonelId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="PersonelDetayKayitlama">
+      <Parameter Name="TC" Mode="In" Type="Int64" />
+      <Parameter Name="IBAN" Mode="In" Type="Int64" />
+      <Parameter Name="SGKNo" Mode="In" Type="Int64" />
+      <Parameter Name="PersonelTur" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="PersonelKullaniciKayitlama">
+      <Parameter Name="TC" Mode="In" Type="Int64" />
+      <Parameter Name="KullaniciAd" Mode="In" Type="String" />
+      <Parameter Name="Sifre" Mode="In" Type="String" />
+      <Parameter Name="Ad" Mode="In" Type="String" />
+      <Parameter Name="Soyad" Mode="In" Type="String" />
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+      <Parameter Name="IBAN" Mode="In" Type="Int64" />
+      <Parameter Name="SGKNo" Mode="In" Type="Int64" />
+      <Parameter Name="PersonelTur" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="PersonelRandevuListele" ReturnType="Collection(HEALTHYFITModel.PersonelRandevuListele_Result)">
+      <Parameter Name="PersonelId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="RandevuSil">
+      <Parameter Name="RandevuId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SalonAntrenorListele" ReturnType="Collection(HEALTHYFITModel.SalonAntrenorListele_Result)">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="SalonAntrenorRandevuListele" ReturnType="Collection(HEALTHYFITModel.SalonAntrenorRandevuListele_Result)">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="SalonDiyetisyenListele" ReturnType="Collection(HEALTHYFITModel.SalonDiyetisyenListele_Result)">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="SalonDiyetisyenRandevuListele" ReturnType="Collection(HEALTHYFITModel.SalonDiyetisyenRandevuListele_Result)">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="SalonFaturaListele" ReturnType="Collection(HEALTHYFITModel.SalonFaturaListele_Result)">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="SalonKursListele" ReturnType="Collection(String)">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="SalonMaasDekontListele" ReturnType="Collection(HEALTHYFITModel.SalonMaasDekontListele_Result)">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="SalonMusteriListele" ReturnType="Collection(HEALTHYFITModel.SalonMusteriListele_Result)">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="SalonRandevuListele" ReturnType="Collection(HEALTHYFITModel.SalonRandevuListele_Result)">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="SehirKursListele" ReturnType="Collection(HEALTHYFITModel.SehirKursListele_Result)">
+      <Parameter Name="PlakaKod" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="YoneticiKullaniciKayitlama">
+      <Parameter Name="TC" Mode="In" Type="Int64" />
+      <Parameter Name="KullaniciAd" Mode="In" Type="String" />
+      <Parameter Name="Sifre" Mode="In" Type="String" />
+      <Parameter Name="Ad" Mode="In" Type="String" />
+      <Parameter Name="Soyad" Mode="In" Type="String" />
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="YoneticiKursEkleme">
+      <Parameter Name="KursAd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="YoneticiSalonKursEkleme">
+      <Parameter Name="SalonId" Mode="In" Type="Int16" />
+      <Parameter Name="KursId" Mode="In" Type="Byte" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="MusteriAntrenorRandevuListele_Result">
+    <Property Type="Int32" Name="RandevuId" Nullable="false" />
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+    <Property Type="DateTime" Name="TarihSaat" Nullable="false" Precision="16" />
+  </ComplexType>
+  <ComplexType Name="MusteriDiyetisyenRandevuListele_Result">
+    <Property Type="Int32" Name="RandevuId" Nullable="false" />
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+    <Property Type="DateTime" Name="TarihSaat" Nullable="false" Precision="16" />
+  </ComplexType>
+  <ComplexType Name="MusteriFaturasiListele_Result">
+    <Property Type="Decimal" Name="Miktar" Nullable="false" Precision="19" />
+    <Property Type="DateTime" Name="Tarih" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="MusteriRandevuListele_Result">
+    <Property Type="Int32" Name="RandevuId" Nullable="false" />
+    <Property Type="Int16" Name="SalonId" Nullable="false" />
+    <Property Type="Int16" Name="PersonelId" Nullable="false" />
+    <Property Type="Boolean" Name="PersonelTuru" Nullable="false" />
+    <Property Type="Int16" Name="MusteriId" Nullable="false" />
+    <Property Type="DateTime" Name="TarihSaat" Nullable="false" Precision="16" />
+  </ComplexType>
+  <ComplexType Name="PersonelDekontListele_Result">
+    <Property Type="Decimal" Name="Miktar" Nullable="false" Precision="19" />
+    <Property Type="DateTime" Name="Tarih" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="PersonelRandevuListele_Result">
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+    <Property Type="DateTime" Name="TarihSaat" Nullable="false" Precision="16" />
+  </ComplexType>
+  <ComplexType Name="SalonAntrenorListele_Result">
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+    <Property Type="Byte" Name="Alan1" Nullable="false" />
+    <Property Type="Byte" Name="Alan2" Nullable="true" />
+    <Property Type="Byte" Name="Alan3" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SalonAntrenorRandevuListele_Result">
+    <Property Type="Int32" Name="RandevuId" Nullable="false" />
+    <Property Type="Int16" Name="PersonelId" Nullable="false" />
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+    <Property Type="Int16" Name="MusteriId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SalonDiyetisyenListele_Result">
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="SalonDiyetisyenRandevuListele_Result">
+    <Property Type="Int32" Name="RandevuId" Nullable="false" />
+    <Property Type="Int16" Name="PersonelId" Nullable="false" />
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+    <Property Type="Int16" Name="MusteriId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SalonFaturaListele_Result">
+    <Property Type="Decimal" Name="Miktar" Nullable="false" Precision="19" />
+    <Property Type="DateTime" Name="Tarih" Nullable="false" />
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="SalonMaasDekontListele_Result">
+    <Property Type="Decimal" Name="Miktar" Nullable="false" Precision="19" />
+    <Property Type="DateTime" Name="Tarih" Nullable="false" />
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="SalonMusteriListele_Result">
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="SalonRandevuListele_Result">
+    <Property Type="Int32" Name="RandevuId" Nullable="false" />
+    <Property Type="Int16" Name="PersonelId" Nullable="false" />
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="25" />
+    <Property Type="Int16" Name="MusteriId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SehirKursListele_Result">
+    <Property Type="String" Name="kursAd" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="SalonAd" Nullable="false" MaxLength="25" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,43 @@
+﻿@model WebApplication12.Models.Entity.Randevu
+@{
+    ViewBag.Title = "RandevuGetir";
+    Layout = "~/Views/Shared/_KullaniciLayout.cshtml";
+}
+
+<form action="/Randevu/RandevuGuncelle/" method="post">
+
+    <div></div>
+    <h2>Randevu Güncelle</h2>
+
+    <div style="margin-top:15px">
+        <label>Randevu Id</label>
+        <input type="text" name="RandevuId" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Salon Id</label>
+        <input type="text" name="SalonId" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel Id</label>
+        <input type="text" name="PersonelId" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel Tür</label>
+        <input type="text" name="PersonelTuru" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Müşteri Id</label>
+        <input type="text" name="MusteriId" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Tarih Saat</label>
+        <input type="text" name="TarihSaat" /><br />
+    </div>
+
+    <div class="homepage_input form_group col-md-3 " style="margin-top:15px">
+
+        <input type="submit" value="Güncelle" class="form-control homepage_signup_button" style="background-color:#28a745; color:white;" />
+    </div>
+</form>
+
+

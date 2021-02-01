@@ -1,0 +1,33 @@
+﻿@using WebApplication12.Models.Entity
+@model List<Randevu>
+@{
+    ViewBag.Title = "PersonelRandevuListele";
+    Layout = "~/Views/Shared/_PersonelLayout.cshtml";
+}
+
+<h2>Randevu Listesi</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Randevu Id</th>
+        <th>Salon Id</th>
+        <th>Personel Id</th>
+        <th>Personel Türü</th>
+        <th>Müşteri Id</th>
+        <th>Tarih Saat</th>
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.RandevuId</td>
+            <td>@x.SalonId</td>
+            <td>@x.PersonelId</td>
+             <td>@x.PersonelTuru</td>
+            <td>@x.MusteriId</td>
+            <td>@x.TarihSaat</td>
+        </tr>
+    }
+
+</table>
+
+

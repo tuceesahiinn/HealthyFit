@@ -1,0 +1,50 @@
+﻿@model WebApplication12.Models.Entity.Login
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<form action="/Personel/PersonelEkle" class="form-group" method="post">
+    <div></div>
+    <h2>Personel Kayıtlama</h2>
+    <div style="margin-top:15px">
+        <label>Personel TC</label>
+        <input type="text" name="TC" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel Kullanıcı Adı</label>
+        <input type="text" name="KullaniciAd" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel Şifre</label>
+        <input type="text" name="Sifre" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel Adı</label>
+        <input type="text" name="Ad" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel Soyadı</label>
+        <input type="text" name="Soyad" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Salon Id</label>
+        <input type="text" name="SalonId" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>IBAN</label>
+        <input type="text" name="IBAN" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>SGK No</label>
+        <input type="text" name="SGKNo" /><br />
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel Tür</label>
+        <input type="text" name="PersonelTur" /><br />
+    </div>
+    <div class="homepage_input form_group">
+        <input type="submit" value="Personel Ekle" class="form-control homepage_signup_button" />
+    </div>
+</form>
+

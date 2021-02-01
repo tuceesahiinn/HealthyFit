@@ -1,0 +1,85 @@
+﻿@using WebApplication12.Models;
+@using WebApplication12.Models.Entity
+
+@{
+    ViewBag.Title = "SalonKurslarıListele";
+    Layout = "~/Views/Shared/_YoneticiLayout.cshtml";
+}
+
+<br />
+<br />
+
+<h2>Salon Kursları Listesi</h2>
+
+<div class="card" style="height:900px;overflow:scroll">
+
+   
+    <div class="card-body">
+        <div id="table" class="table-editable col-md-6">
+
+            <table id="scroll" style="overflow:scroll" class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                    <tr>
+
+                        <th class="text-center">Salon Adları</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var isim in ViewBag.Ad)
+                    {
+
+                        <tr>
+
+
+                            <td class="col-md-3" contenteditable="false">@isim</td>
+                        </tr>
+                    }
+                  
+
+                </tbody>
+            </table>
+
+
+        </div>
+        <div id="table" class="table-editable col-md-6">
+
+            <table id="scroll" style="overflow:scroll" class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                    <tr>
+
+                        <th class="text-center">Kurs Adları</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var kursAdi in ViewBag.KursAd)
+                    {
+
+
+                        <tr>
+                            <td class="col-md-6" contenteditable="false">@kursAdi</td>
+
+
+                        </tr>
+
+
+
+                    }
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

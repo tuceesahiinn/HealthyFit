@@ -1,0 +1,22 @@
+﻿@using WebApplication12.Models.Entity
+@model List<Fatura>
+@{
+    ViewBag.Title = "MusteriFaturaListeleme";
+    Layout = "~/Views/Shared/_KullaniciLayout.cshtml";
+}
+<h2>Fatura Listeleme</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Miktar</th>
+        <th>Tarih</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Miktar</td>
+            <td>@x.Tarih</td>
+        </tr>
+    }
+</table>
+
